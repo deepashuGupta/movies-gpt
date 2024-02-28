@@ -6,6 +6,8 @@
 - From Validation
 - Firebase setup
 - Delopy setup in firebase
+- Implemented firebase SignIn / SignUp Api
+- configuring redux to our app
 
 https://moviesgpt-bf6e3.web.app
 

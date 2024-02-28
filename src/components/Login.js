@@ -2,11 +2,21 @@ import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { validateSignInForm, validateSignUpForm } from "../utils/validate";
 import { auth } from "../utils/firebaseConfig";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { addUser } from "../store/userSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [isSingInForm, setIsSingInForm] = useState(true);
   const inputs = useRef({});
   const [errorMessage, setErrorMessage] = useState({});
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSingInForm = () => {
     setIsSingInForm(!isSingInForm);
@@ -15,19 +25,47 @@ const Login = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    let email = inputs.current.email.value;
+    let password = inputs.current.password.value;
+    let error = {};
     if (isSingInForm) {
-      let error = validateSignInForm(
-        inputs.current.email.value,
-        inputs.current.password.value
-      );
+      error = validateSignInForm(email, password);
       setErrorMessage(error);
+      if (Object.keys(error).length > 0) return;
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/browse");
+        })
+        .catch((err) => {
+          const errCode = err.code;
+          const errMessage = err.message;
+          setErrorMessage({ userError: errCode + " - " + errMessage });
+        });
     } else {
-      let error = validateSignUpForm(
-        inputs.current.name.value,
-        inputs.current.email.value,
-        inputs.current.password.value
-      );
+      error = validateSignUpForm(inputs.current.name.value, email, password);
       setErrorMessage(error);
+      if (Object.keys(error).length > 0) return;
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          updateProfile(user, {
+            displayName: inputs.current.name.value,
+          }).then(() => {
+            const user = auth.currentUser;
+            const { uid, email, displayName } = user;
+            dispatch(
+              addUser({ uid: uid, email: email, displayName: displayName })
+            );
+            navigate("/browse");
+          });
+        })
+        .catch((err) => {
+          const errCode = err.code;
+          const errMessage = err.message;
+          setErrorMessage({ userError: errCode + " - " + errMessage });
+        });
     }
   };
 
@@ -69,6 +107,9 @@ const Login = () => {
           />
           {errorMessage.password && (
             <p className="text-xs text-red-400">{errorMessage.password}</p>
+          )}
+          {errorMessage.userError && (
+            <p className="text-xs text-red-400">{errorMessage.userError}</p>
           )}
           <button
             type="submit"
