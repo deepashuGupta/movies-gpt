@@ -1,6 +1,13 @@
 # Movies GPT
 
 - Tailwind Css configuration
+- Routing Setup
+- Login / SingUp Form
+- From Validation
+- Firebase setup
+- Delopy setup in firebase
+
+https://moviesgpt-bf6e3.web.app
 
 # Features
 
