@@ -8,6 +8,9 @@
 - Delopy setup in firebase
 - Implemented firebase SignIn / SignUp Api
 - configuring redux to our app
+- LogOut functionality added.
+- Protected Route login/browse.
+- Add constant file for constant url for images like LOGO, user avatar
 
 https://moviesgpt-bf6e3.web.app
 
@@ -26,3 +29,10 @@ https://moviesgpt-bf6e3.web.app
 
 - Search Bar
 - Movie Suggestion
+
+- Main Browse section
+  - VideoSection
+    - VideoTrailer
+    - VideoTitle
+  - MoviesListSetion
+    - MovieList

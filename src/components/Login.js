@@ -7,15 +7,14 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { addUser } from "../store/userSlice";
 import { useDispatch } from "react-redux";
+import { LOGIN_BACKGROUND } from "../utils/constant";
 
 const Login = () => {
   const [isSingInForm, setIsSingInForm] = useState(true);
   const inputs = useRef({});
   const [errorMessage, setErrorMessage] = useState({});
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSingInForm = () => {
@@ -35,8 +34,6 @@ const Login = () => {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
         })
         .catch((err) => {
           const errCode = err.code;
@@ -58,7 +55,6 @@ const Login = () => {
             dispatch(
               addUser({ uid: uid, email: email, displayName: displayName })
             );
-            navigate("/browse");
           });
         })
         .catch((err) => {
@@ -92,7 +88,7 @@ const Login = () => {
           )}
           <input
             ref={(e) => (inputs.current.email = e)}
-            className="px-4 py-2 my-2 rounded-lg bg-gray-700"
+            className="px-4 py-2 my-2 bg-gray-700"
             type="email"
             placeholder="Email Address"
           />
@@ -101,7 +97,7 @@ const Login = () => {
           )}
           <input
             ref={(e) => (inputs.current.password = e)}
-            className="px-4 py-2 my-2 rounded-lg bg-gray-700"
+            className="px-4 py-2 my-2  bg-gray-700"
             type="password"
             placeholder="Password"
           />
@@ -111,10 +107,7 @@ const Login = () => {
           {errorMessage.userError && (
             <p className="text-xs text-red-400">{errorMessage.userError}</p>
           )}
-          <button
-            type="submit"
-            className="px-4 py-2 my-6 rounded-lg bg-red-700"
-          >
+          <button type="submit" className="px-4 py-2 my-6 bg-red-700">
             {isSingInForm ? "Sign In" : "Sign Up"}
           </button>
         </form>
@@ -136,7 +129,7 @@ const Login = () => {
       </div>
       <img
         className="w-[100%] h-[100vh] object-cover "
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/2e07bc25-8b8f-4531-8e1f-7e5e33938793/e4b3c14a-684b-4fc4-b14f-2b486a4e9f4e/IN-en-20240219-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+        src={LOGIN_BACKGROUND}
         alt="background"
       />
     </div>
