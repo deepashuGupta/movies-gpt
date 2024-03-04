@@ -11,6 +11,13 @@
 - LogOut functionality added.
 - Protected Route login/browse.
 - Add constant file for constant url for images like LOGO, user avatar
+- Movie Slice Implemented
+- Movie details fetch from TMDDB
+- Trailer Detial fetch from TMDB
+- Display trailer and title in HomePage
+- Horizontal scroll feature
+- Hide the API key usin .env file
+- created movie list for latest release, toprate, popular, upcoming
 
 https://moviesgpt-bf6e3.web.app
 

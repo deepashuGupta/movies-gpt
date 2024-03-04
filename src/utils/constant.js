@@ -11,7 +11,8 @@ export const URL_OPTION = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmFhYjI2MWM4OTlkM2YyZTZiOTgzMDBmNjQ0NTk5MSIsInN1YiI6IjY1ZTFiYjM1NTFmOTlhMDE2MjU3M2Q0NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RNRXkwPNNYjVovoLxhoOP6JiJODFkETO3QhDe7GN5CQ",
+    Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
   },
 };
+
+export const POSTER_URL = "https://image.tmdb.org/t/p/w500";
