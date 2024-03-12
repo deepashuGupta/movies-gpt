@@ -43,18 +43,20 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between px-4 absolute w-full bg-gradient-to-b from-black z-40">
+    <div className="flex fixed justify-between px-4 w-full bg-gradient-to-b from-black z-40">
       <img className="w-40 " src={LOGO} alt="logo" />
       {currentUser && (
         <div className="flex items-center mr-4 text-white">
-          <select
-            onChange={handleLanguage}
-            className="border-none px-4 py-2 mx-2 bg-black"
-          >
-            <option value="en">English</option>
-            <option value="hindi">Hindi</option>
-            <option value="french">French</option>
-          </select>
+          {isGPTSearch && (
+            <select
+              onChange={handleLanguage}
+              className="border-none px-4 py-2 mx-2 bg-black"
+            >
+              <option value="en">English</option>
+              <option value="hindi">Hindi</option>
+              <option value="french">French</option>
+            </select>
+          )}
           <button
             onClick={() => dispatch(showGptSearh())}
             className="px-4 py-2 bg-white bg-opacity-50 text-black"
