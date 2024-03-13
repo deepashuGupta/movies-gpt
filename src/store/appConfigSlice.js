@@ -7,8 +7,8 @@ const appConfig = createSlice({
     selectedLanguage: "en",
   },
   reducers: {
-    showGptSearh: (state) => {
-      state.isGPTSearch = !state.isGPTSearch;
+    showGptSearh: (state, action) => {
+      state.isGPTSearch = action.payload;
     },
     setLanguage: (state, action) => {
       state.selectedLanguage = action.payload;
