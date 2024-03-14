@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { DUMMY_MOVIE_POSTER, POSTER_URL } from "../utils/constant";
+import { useDispatch } from "react-redux";
+import { setShowPopUp } from "../store/appConfigSlice";
+import { getMovieDetails, getTrailerById } from "../store/actions/movieAction";
 
 const MovieCard = ({ info }) => {
   const [showIcon, setShowIcon] = useState(false);
+  const dispatch = useDispatch();
   const handleMouseEnter = () => {
     setShowIcon(true);
   };
@@ -38,8 +42,16 @@ const MovieCard = ({ info }) => {
             onMouseLeave={handleMouseLeave}
             className="p-2 text-2xl -mt-12 z-50"
           >
-            <i className="fa-solid fa-circle-play mr-4 cursor-pointer"></i>
-            <i class="fa-solid fa-circle-plus cursor-pointer"></i>
+            <span
+              onClick={() => {
+                dispatch(setShowPopUp(true));
+                dispatch(getMovieDetails(info?.id));
+                dispatch(getTrailerById(info?.id));
+              }}
+            >
+              <i className="fa-solid fa-circle-play mr-4 cursor-pointer"></i>
+            </span>
+            <i className="fa-solid fa-circle-plus cursor-pointer"></i>
           </div>
         )}
       </div>

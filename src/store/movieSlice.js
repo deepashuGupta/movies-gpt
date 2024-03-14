@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getMovieDetails, getTrailerById } from "./actions/movieAction";
 
 const movieSlice = createSlice({
   name: "Movie Details",
@@ -8,6 +9,10 @@ const movieSlice = createSlice({
     popularMovies: null,
     topRatedMovies: null,
     upComingMovies: null,
+    movieInfo: null,
+    error: null,
+    loading: false,
+    trailerByID: [],
   },
   reducers: {
     addNowPlaying: (state, action) => {
@@ -25,6 +30,31 @@ const movieSlice = createSlice({
     addUpComings: (state, action) => {
       state.upComingMovies = action.payload;
     },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(getMovieDetails.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(getMovieDetails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(getMovieDetails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.movieInfo = action.payload;
+      })
+      .addCase(getTrailerById.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(getTrailerById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(getTrailerById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.trailerByID = action.payload;
+      });
   },
 });
 

@@ -1,6 +1,7 @@
 import { LOGIN_BACKGROUND } from "../utils/constant";
 import GptInput from "./GptInput";
 import GptMovie from "./GptMovie";
+import PopUp from "./PopUp";
 
 const GptSearch = () => {
   return (
@@ -15,6 +16,7 @@ const GptSearch = () => {
         <GptInput />
       </div>
       <GptMovie />
+      <PopUp />
     </div>
   );
 };

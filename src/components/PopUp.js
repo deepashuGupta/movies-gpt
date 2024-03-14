@@ -1,13 +1,25 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowPopUp } from "../store/appConfigSlice";
+import MovieInfo from "./MovieInfo";
 
 const PopUp = () => {
+  const showPopUp = useSelector((state) => state.appConfig.showPopUp);
+  const dispatch = useDispatch();
   return (
-    <div className="flex justify-center items-center fixed inset-0 bg-black bg-opacity-35 backdrop-blur-sm">
-      <div className="w-[80vw] h-[550px] bg-white px-4 py-2">
-        <span className="flex flex-row-reverse cursor-pointer ">
-          <i className="fa-solid fa-circle-xmark text-3xl shadow-lg rounded-full"></i>
+    <div
+      className={`${
+        showPopUp ? "flex" : "hidden"
+      } flex justify-center items-center fixed inset-0 bg-black bg-opacity-35 backdrop-blur-sm`}
+    >
+      <div className="relative w-[80vw] bg-black p-2">
+        <span
+          onClick={() => dispatch(setShowPopUp(false))}
+          className="absolute right-0 mr-4 cursor-pointer bg-white px-2 rounded-full"
+        >
+          <i className="fa-solid fa-xmark text-2xl"></i>
         </span>
-        <h1>Movie description || WishList</h1>
+        <MovieInfo />
       </div>
     </div>
   );
