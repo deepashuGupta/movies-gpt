@@ -5,7 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { addUser, removeUser } from "../store/userSlice";
 import { LOGO, USER_AVATAR } from "../utils/constant";
-import { setLanguage, showGptSearh } from "../store/appConfigSlice";
+import {
+  setLanguage,
+  setShowPopUp,
+  showGptSearh,
+} from "../store/appConfigSlice";
 import Menu from "./Menu";
 
 const Header = () => {
@@ -17,7 +21,7 @@ const Header = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
+      if (user && user?.emailVerified) {
         const { email, displayName, uid } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
         navigate("/browse");
@@ -49,6 +53,7 @@ const Header = () => {
         <img
           onClick={() => {
             dispatch(showGptSearh(false));
+            dispatch(setShowPopUp(false));
           }}
           className="w-40 cursor-pointer"
           src={LOGO}

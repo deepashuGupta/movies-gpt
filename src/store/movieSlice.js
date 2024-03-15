@@ -12,7 +12,7 @@ const movieSlice = createSlice({
     movieInfo: null,
     error: null,
     loading: false,
-    trailerByID: [],
+    trailerByID: ["dummy"],
   },
   reducers: {
     addNowPlaying: (state, action) => {

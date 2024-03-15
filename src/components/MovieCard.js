@@ -40,18 +40,18 @@ const MovieCard = ({ info }) => {
           <div
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="p-2 text-2xl -mt-12 z-50"
+            className="-mt-10 z-50"
           >
-            <span
+            <button
+              className="w-40 py-2 bg-black bg-opacity-50"
               onClick={() => {
                 dispatch(setShowPopUp(true));
                 dispatch(getMovieDetails(info?.id));
                 dispatch(getTrailerById(info?.id));
               }}
             >
-              <i className="fa-solid fa-circle-play mr-4 cursor-pointer"></i>
-            </span>
-            <i className="fa-solid fa-circle-plus cursor-pointer"></i>
+              <i className="fa-solid fa-circle-play"></i> Trailer
+            </button>
           </div>
         )}
       </div>

@@ -1,16 +1,23 @@
 import { useSelector } from "react-redux";
 import { POSTER_URL } from "../utils/constant";
+import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const MovieInfo = () => {
   const { movieInfo, trailerByID } = useSelector((state) => state.movies);
-  console.log(trailerByID);
+  useEffect(() => {
+    console.log(trailerByID);
+    if (trailerByID.length === 0 && !trailerByID[0]?.key) {
+      toast.error("Trailer Not Found!");
+    }
+  }, [trailerByID]);
   return (
     <div className="flex text-white">
       <iframe
         className="h-[480px] aspect-video mr-2"
         src={
           "https://www.youtube-nocookie.com/embed/" +
-          (trailerByID.length > 0 ? trailerByID[0]?.key : "Yxe-mIVIwM4")
+          (trailerByID.length > 0 ? trailerByID[0]?.key : "")
         }
         title="YouTube video player"
         frameBorder="0"
@@ -20,7 +27,7 @@ const MovieInfo = () => {
       <div>
         <div className="flex">
           <img
-            className="w-28"
+            className="w-20"
             src={POSTER_URL + movieInfo?.poster_path}
             alt={movieInfo?.poster_path}
           />
