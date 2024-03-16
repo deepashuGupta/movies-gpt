@@ -9,7 +9,7 @@ const VideoTrailer = ({ movieId }) => {
   return (
     <div>
       <iframe
-        className="w-full aspect-video"
+        className="w-full aspect-video h-[50vh] md:h-full"
         src={
           "https://www.youtube-nocookie.com/embed/" +
           trailer[0]?.key +

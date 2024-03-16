@@ -10,9 +10,9 @@ const PopUp = () => {
     <div
       className={`${
         showPopUp ? "flex" : "hidden"
-      } flex justify-center items-center fixed inset-0 bg-black bg-opacity-35 backdrop-blur-sm`}
+      } justify-center items-center fixed inset-0 bg-black bg-opacity-35 backdrop-blur-sm`}
     >
-      <div className="relative w-[80vw] bg-black p-2">
+      <div className="w-[90vw] relative md:w-[80vw] bg-black p-2">
         <span
           onClick={() => dispatch(setShowPopUp(false))}
           className="absolute right-0 mr-4 cursor-pointer bg-white px-2 rounded-full"

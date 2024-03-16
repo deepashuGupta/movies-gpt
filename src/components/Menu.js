@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { setShowPopUp, showGptSearh } from "../store/appConfigSlice";
 import { useDispatch } from "react-redux";
 
-const Menu = () => {
+const Menu = ({ setShowMenu }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -25,6 +25,7 @@ const Menu = () => {
         onClick={() => {
           dispatch(showGptSearh(true));
           dispatch(setShowPopUp(false));
+          setShowMenu(false);
         }}
         className="px-8 py-2 bg-black hover:bg-opacity-50"
       >

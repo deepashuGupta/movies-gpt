@@ -6,13 +6,12 @@ import { useEffect } from "react";
 const MovieInfo = () => {
   const { movieInfo, trailerByID } = useSelector((state) => state.movies);
   useEffect(() => {
-    console.log(trailerByID);
     if (trailerByID.length === 0 && !trailerByID[0]?.key) {
       toast.error("Trailer Not Found!");
     }
   }, [trailerByID]);
   return (
-    <div className="flex text-white">
+    <div className="flex flex-col text-white md:flex-row">
       <iframe
         className="h-[480px] aspect-video mr-2"
         src={

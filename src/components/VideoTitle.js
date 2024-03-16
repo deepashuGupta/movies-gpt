@@ -12,10 +12,14 @@ const VideoTitle = ({ nowPlayinDetails }) => {
   };
   if (!nowPlayinDetails) return;
   return (
-    <div className="absolute -top-1 bg-black bg-opacity-50 text-white w-[full] px-8 py-[20%]">
-      <p className="text-6xl font-bold">{nowPlayinDetails?.original_title}</p>
-      <p className="w-1/3 my-4">{nowPlayinDetails.overview}</p>
-      <div>
+    <div className="absolute -top-1 bg-black bg-opacity-60 text-white w-[100%] px-8 py-[72%] md:py-[20%]">
+      <p className="font-bold text-3xl md:text-6xl ">
+        {nowPlayinDetails?.original_title}
+      </p>
+      <p className="my-4 hidden md:w-1/3 md:block">
+        {nowPlayinDetails.overview}
+      </p>
+      <div className="my-4 md:my-0">
         <button
           className="px-8 py-2 bg-white text-black"
           onClick={handleNowPlayingInfo}

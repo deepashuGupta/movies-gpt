@@ -77,7 +77,7 @@ const Login = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="fixed md:relative">
       <Header />
       <div className="absolute w-[100%] h-[100vh] bg-black opacity-40"></div>
       <div

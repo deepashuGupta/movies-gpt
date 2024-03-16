@@ -12,7 +12,7 @@ const MovieListContainer = () => {
   useUpComing();
   return (
     <div className="bg-black text-white px-8">
-      <div className="relative -mt-56">
+      <div className="relative md:-mt-56">
         <MovieList
           title={"Latest Release"}
           movieDetails={movies?.nowPlaying}

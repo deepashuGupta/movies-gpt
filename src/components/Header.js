@@ -61,7 +61,7 @@ const Header = () => {
         />
         {currentUser && (
           <div className="flex items-center mr-4 text-white">
-            {isGPTSearch && (
+            {/* {isGPTSearch && (
               <select
                 onChange={handleLanguage}
                 className="border-none px-4 py-2 mx-2 bg-black"
@@ -70,7 +70,7 @@ const Header = () => {
                 <option value="hindi">Hindi</option>
                 <option value="french">French</option>
               </select>
-            )}
+            )} */}
 
             <img className="w-10 mx-4" src={USER_AVATAR} alt="user" />
             <span
@@ -86,7 +86,7 @@ const Header = () => {
           </div>
         )}
       </div>
-      {showMenu && <Menu />}
+      {showMenu && <Menu setShowMenu={setShowMenu} />}
     </>
   );
 };

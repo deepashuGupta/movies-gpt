@@ -35,7 +35,6 @@ const GptInput = () => {
     const moviesName = gptResult.choices[0].message.content.split(", ");
     let movieResult = moviesName.map((movie) => searchTMDBMovie(movie));
     const movieResultData = await Promise.all(movieResult);
-    console.log(movieResultData);
     dispatch(addMovies({ moviesName, movieResultData }));
   };
 
@@ -44,11 +43,11 @@ const GptInput = () => {
       <form>
         <input
           ref={searchInput}
-          className="w-[500px] px-4 py-2 mr-4 text-black"
+          className="w-[200px] px-4 py-2 mr-4 text-black md:w-[300px] lg:w-[500px]"
           type="text"
           placeholder={gptInput[lang].inputPlaceholder}
         />
-        <button className="px-8 py-2 bg-red-700" type="submit">
+        <button className="px-4 py-2 bg-red-700 md:px-8" type="submit">
           {gptInput[lang].buttonText}
         </button>
       </form>
