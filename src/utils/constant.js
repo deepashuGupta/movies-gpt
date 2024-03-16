@@ -19,3 +19,6 @@ export const POSTER_URL = "https://image.tmdb.org/t/p/w500";
 
 export const DUMMY_MOVIE_POSTER =
   "https://images.unsplash.com/photo-1529798856831-427dfd0a1ab1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
+export const errorImg =
+  "https://media.istockphoto.com/id/1153248860/photo/caution-security-alert-compliance-business-regulations-protection-privacy-breach-alert.webp?b=1&s=170667a&w=0&k=20&c=EPL8a-f4jXp4sxby163TMsOMU-ZNUr03C3Rm4qYjoNU=";

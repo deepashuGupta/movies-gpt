@@ -36,11 +36,11 @@ const MovieCard = ({ info }) => {
             alt={info?.title + "poster"}
           />
         )}
-        {showIcon && (
+        {
           <div
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="-mt-10 z-50"
+            className={`-mt-10 z-50 ${showIcon ? "block" : "md:hidden"}`}
           >
             <button
               className="w-40 py-2 bg-black bg-opacity-50"
@@ -53,7 +53,7 @@ const MovieCard = ({ info }) => {
               <i className="fa-solid fa-circle-play"></i> Trailer
             </button>
           </div>
-        )}
+        }
       </div>
     </>
   );
