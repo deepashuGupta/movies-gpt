@@ -12,7 +12,7 @@ const VideoTitle = ({ nowPlayinDetails }) => {
   };
   if (!nowPlayinDetails) return;
   return (
-    <div className="absolute -top-1 bg-black bg-opacity-60 text-white w-[100%] px-8 py-[72%] md:py-[20%]">
+    <div className="absolute -top-1 bg-black bg-opacity-60 text-white w-[100%] px-8 py-[80%] md:py-[20%]">
       <p className="font-bold text-3xl md:text-6xl ">
         {nowPlayinDetails?.original_title}
       </p>
