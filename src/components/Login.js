@@ -143,7 +143,7 @@ const Login = () => {
               <p>
                 Already a user?{" "}
                 <strong onClick={handleSingInForm} className="cursor-pointer">
-                  Sing In
+                  Sign In
                 </strong>
               </p>
             )}
